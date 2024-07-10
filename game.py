@@ -5,18 +5,18 @@ class Game:
     def __init__(self):
         self.question = ""
 
-    def guess(self, guessNumber: str):
-        self.assert_illegal_value(guessNumber)
+    def guess(self, guess_number: str):
+        self.assert_illegal_value(guess_number)
+        if guess_number == self.question:
+            return GameResult(True, 3, 0)
 
-        return GameResult(True, 3, 0)
-
-    def assert_illegal_value(self, guessNumber):
-        if guessNumber is None:
+    def assert_illegal_value(self, guess_number):
+        if guess_number is None:
             raise TypeError
-        if len(guessNumber) != 3:
+        if len(guess_number) != 3:
             raise TypeError
-        for ch in guessNumber:
+        for ch in guess_number:
             if not ch.isdigit():
                 raise TypeError
-            if guessNumber.count(ch) > 1:
+            if guess_number.count(ch) > 1:
                 raise TypeError
