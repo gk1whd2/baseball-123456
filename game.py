@@ -12,9 +12,7 @@ class Game:
         else:
             strikes = 0
             for i in range(len(self.question)):
-                ch = guess_number[i]
-                idx = self.question.find(ch)
-                if idx == i:
+                if self.question.find(guess_number[i]) == i:
                     strikes += 1
             return GameResult(False, strikes,0)
 
